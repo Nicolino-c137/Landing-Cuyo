@@ -1,0 +1,20 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray<Element>('.fade-in').forEach((el) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 35,
+      duration: 0.75,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      },
+    });
+  });
+}

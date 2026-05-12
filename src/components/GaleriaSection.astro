@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+
+import img4  from '../assets/images/imagen4.jpg';
+import img5  from '../assets/images/imagen5.jpg';
+import img9  from '../assets/images/imagen9.jpg';
+import img10 from '../assets/images/imagen10.jpg';
+import img11 from '../assets/images/imagen11.jpg';
+import imgFondo from '../assets/images/fondo.jpg';
+import img20 from '../assets/images/imagen20.jpg';
+import img21 from '../assets/images/imagen21.jpg';
+import img22 from '../assets/images/imagen22.jpg';
+import img23 from '../assets/images/imagen23.jpg';
+import img24 from '../assets/images/imagen24.jpg';
+
+const fotos = [
+  { src: img4,    alt: 'Cuyo Cerveza Artesanal — proceso de elaboración' },
+  { src: img5,    alt: 'Cuyo Cerveza Artesanal — ingredientes locales' },
+  { src: img9,    alt: 'Cuyo Cerveza Artesanal — detalle de cerveza' },
+  { src: img11,   alt: 'Cuyo Cerveza Artesanal — cata artesanal' },
+  { src: imgFondo,alt: 'Cuyo Cerveza Artesanal — fondo de escena' },
+  { src: img10,   alt: 'Cuyo Cerveza Artesanal — espuma y color' },
+  { src: img20,   alt: 'Cuyo Cerveza Artesanal — momento de brindis' },
+  { src: img21,   alt: 'Cuyo Cerveza Artesanal — evento local' },
+  { src: img22,   alt: 'Cuyo Cerveza Artesanal — variedad de estilos' },
+  { src: img23,   alt: 'Cuyo Cerveza Artesanal — copa artesanal' },
+  { src: img24,   alt: 'Cuyo Cerveza Artesanal — equipo elaborador' },
+];
+---
+
+<section id="galeria" class="py-24 md:py-32 bg-[var(--color-surface-low)]" data-nav-color="dark">
+  <div class="max-w-screen-xl mx-auto px-6 section-container">
+
+    <!-- Header -->
+    <div class="fade-in text-center mb-16">
+      <p class="text-[var(--color-primary)] text-xs uppercase tracking-[0.3em] mb-4">
+        Momentos de cuyo
+      </p>
+      <h2 class="heading-xl text-white mb-4" style="margin-bottom: 1.5rem;">Galería</h2>
+      <div class="flex justify-center mt-6">
+        <div class="gold-divider mx-auto" style="margin-bottom: 3.5rem;"></div>
+      </div>
+    </div>
+
+    <!-- Masonry-style grid -->
+    <div class="galeria-grid">
+      {fotos.map((foto, i) => (
+        <div class:list={['fade-in galeria-item flex items-center justify-center', { 'galeria-item--tall': i === 0 || i === 5, }]}>
+          <Image
+            src={foto.src}
+            alt={foto.alt}
+            loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            widths={[600, 900]}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 250px;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .galeria-grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 300px;
+    }
+  }
+  .galeria-item {
+    overflow: hidden;
+  }
+  .galeria-item--tall {
+    grid-row: span 2;
+  }
+</style>

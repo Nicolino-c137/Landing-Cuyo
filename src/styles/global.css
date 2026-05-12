@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --color-primary:      #C9933A;   /* dorado / miel */
+  --color-primary-dark: #A37728;   /* dorado oscuro hover */
+  --color-surface:      #0D0C0A;   /* fondo negro cálido */
+  --color-surface-low:  #161410;   /* fondo alternativo */
+  --color-surface-high: #2A2620;   /* bordes / separadores */
+  --color-on-surface:   #E8E0D0;   /* texto principal */
+  --color-on-surface-muted: #8A8070; /* texto secundario */
+  --color-error:        #C0392B;
+
+  --nav-blur: 20px;
+  --radius-btn: 9999px;
+}
+
+/* ===== FUENTES (Google Fonts — cargadas en BaseLayout head) ===== */
+
+/* ===== RESET ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== TIPOGRAFÍA FLUIDA ===== */
+.heading-display { font-size: clamp(3.5rem, 8vw, 8rem); font-family: 'Playfair Display', Georgia, serif; line-height: 1.05; }
+.heading-xl      { font-size: clamp(2.5rem, 5vw, 5rem);  font-family: 'Playfair Display', Georgia, serif; line-height: 1.1; }
+.heading-lg      { font-size: clamp(1.75rem, 3vw, 3rem); font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; }
+.heading-md      { font-size: clamp(1.25rem, 2vw, 2rem); }
+.body-lg         { font-size: clamp(1rem, 1.5vw, 1.125rem); line-height: 1.75; }
+
+/* ===== UTILIDADES DE COLOR ===== */
+.text-primary    { color: var(--color-primary); }
+.text-muted      { color: var(--color-on-surface-muted); }
+.bg-surface-low  { background-color: var(--color-surface-low); }
+.border-surface  { border-color: var(--color-surface-high); }
+
+/* ===== BOTÓN PRIMARY ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-btn);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* ===== BOTÓN OUTLINE ===== */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-btn);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* ===== FADE-IN (para GSAP ScrollTrigger — GSAP anima desde 0, los elementos son visibles por defecto) ===== */
+.fade-in {
+  will-change: transform, opacity;
+}
+
+/* ===== CONTENEDOR CENTRADO ===== */
+.section-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* ===== SEPARADOR DORADO ===== */
+.gold-divider {
+  width: 8rem;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+/* ===== GRAYSCALE HOVER (cards de catálogo) ===== */
+.img-card {
+  filter: grayscale(0.6);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+.img-card:hover {
+  filter: grayscale(0);
+  transform: scale(1.02);
+}

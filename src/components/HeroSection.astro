@@ -1,0 +1,191 @@
+---
+import { Image } from 'astro:assets';
+import img1 from '../assets/images/frase1.jpg';
+import img2 from '../assets/images/frases2.jpg';
+import img3 from '../assets/images/frases3.jpg';
+import img4 from '../assets/images/frases4.jpg';
+import img5 from '../assets/images/frases5.jpg';
+import img6 from '../assets/images/frases6.jpg';
+import img7 from '../assets/images/frases7.jpg';
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  <!-- Collage de fondo -->
+  <div class="collage" aria-hidden="true">
+    <div class="col col-a">
+      <Image src={img1} alt="" loading="eager" class="collage-img" widths={[600, 900]} sizes="30vw" />
+      <Image src={img2} alt="" loading="eager" class="collage-img" widths={[600, 900]} sizes="30vw" />
+    </div>
+    <div class="col col-b">
+      <Image src={img3} alt="" loading="eager" class="collage-img" widths={[600, 900]} sizes="40vw" />
+      <Image src={img4} alt="" loading="eager" class="collage-img" widths={[600, 900]} sizes="40vw" />
+      <Image src={img5} alt="" loading="eager" class="collage-img" widths={[600, 900]} sizes="40vw" />
+    </div>
+    <div class="col col-c">
+      <Image src={img6} alt="" loading="eager" class="collage-img" widths={[600, 900]} sizes="30vw" />
+      <Image src={img7} alt="" loading="eager" class="collage-img" widths={[600, 900]} sizes="30vw" />
+    </div>
+  </div>
+
+  <!-- Overlay: oscuro y gradiente dorado sutil -->
+  <div class="overlay" aria-hidden="true"></div>
+
+  <!-- Contenido centrado -->
+  <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+
+    <p class="hero-label">San Juan, Argentina</p>
+
+    <h1 class="hero-title">
+      Elaborada con<br />
+      <em class="text-[var(--color-primary)] not-italic">alma cuyana</em>
+    </h1>
+
+    <p class="hero-sub" style="margin-bottom: 3.5rem;">
+      Cerveza artesanal con identidad propia. Ingredientes locales, técnica precisa
+      y la esencia de Cuyo en cada sorbo.
+    </p>
+
+    <div class="hero-ctas">
+      <a href={`${import.meta.env.BASE_URL}#catalogo`} class="btn-primary">
+        Descubrí nuestras cervezas
+      </a>
+      <a
+        href="https://wa.me/541163765167?text=Hola!%20Me%20interesa%20saber%20más%20sobre%20Cuyo%20Cerveza%20Artesanal"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline"
+        style="border-color: rgba(255,255,255,0.4); color: #fff;"
+      >
+        Contactar por WhatsApp
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ===== COLLAGE ===== */
+  .collage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: grid;
+    grid-template-columns: 28% 44% 28%;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .collage-img {
+    width: 100%;
+    flex: 1;
+    object-fit: cover;
+    display: block;
+  }
+  /* columna izquierda: img1 más alta, img2 más corta */
+  .col-a .collage-img:nth-child(1) { flex: 1.6; }
+  .col-a .collage-img:nth-child(2) { flex: 1; }
+  /* columna central: 3 imágenes uniformes */
+  .col-b .collage-img { flex: 1; }
+  /* columna derecha: img6 más corta, img7 más alta */
+  .col-c .collage-img:nth-child(1) { flex: 1; }
+  .col-c .collage-img:nth-child(2) { flex: 1.6; }
+
+  /* ===== OVERLAY ===== */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background:
+      linear-gradient(to bottom,
+        rgba(13,12,10,0.55) 0%,
+        rgba(13,12,10,0.35) 40%,
+        rgba(13,12,10,0.65) 100%
+      );
+  }
+
+  /* ===== CONTENIDO — animaciones CSS puras ===== */
+  .hero-label {
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 7vw, 7.5rem);
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.45s;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.75;
+    color: rgba(255,255,255,0.7);
+    max-width: 32rem;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.65s;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.85s;
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.1s;
+  }
+  .scroll-arrow {
+    width: 18px;
+    height: 18px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    animation: bounce 1.8s ease infinite 1.5s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50%       { transform: rotate(45deg) translateY(5px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-label, .hero-title, .hero-sub, .hero-ctas, .scroll-hint {
+      animation: none;
+      opacity: 1;
+    }
+    .scroll-arrow { animation: none; }
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import sobreImg from '../assets/images/sobre_nosotros.jpg';
+---
+
+<section id="sobre-nosotros" class="py-24 md:py-32 bg-[var(--color-surface-low)]" data-nav-color="dark">
+  <div class="max-w-screen-xl mx-auto px-6 section-container">
+
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Imagen -->
+      <div class="fade-in relative md:translate-y-10">
+        <Image
+          src={sobreImg}
+          alt="Hernán Coronel, fundador de Cuyo Cerveza Artesanal"
+          loading="lazy"
+          class="w-full h-[650px] object-cover"
+          widths={[600, 900]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        <!-- Acento dorado decorativo -->
+        <div
+          class="absolute -bottom-4 -right-4 w-24 h-24 border border-[var(--color-primary)] pointer-events-none hidden md:block"
+          aria-hidden="true"
+        ></div>
+      </div>
+
+      <!-- Texto -->
+      <div class="fade-in">
+        <p class="text-[var(--color-primary)] text-xs uppercase tracking-[0.3em] mb-4" style="margin-bottom: 1.5rem;">
+          Nuestra historia
+        </p>
+
+        <h2 class="heading-lg text-white mb-6" style="margin-bottom: 1.5rem;">
+          Más que una cervecería
+        </h2>
+
+        <div class="flex justify-center mt-6">
+          <div class="gold-divider mx-auto" style="margin-bottom: 3.5rem;"></div>
+        </div>
+
+        <div class="space-y-5 body-lg text-[var(--color-on-surface-muted)]" style="margin-bottom: 2rem;">
+          <p style="margin-bottom: 1rem;">
+            En Cuyo Cerveza Artesanal creemos que una buena cerveza también puede contar la historia de un lugar.
+            Nacimos en San Juan con la idea de crear cervezas artesanales auténticas, elaboradas con materias primas
+            seleccionadas y una fuerte identidad cuyana. Cada receta combina técnica, pasión e ingredientes que representan
+            nuestra tierra, como miel sanjuanina y vainas de algarrobo de Valle Fértil.
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Detrás de Cuyo está <strong class="text-[var(--color-on-surface)]">Hernán Coronel</strong>, un apasionado por la cultura
+            cervecera que convirtió su búsqueda de calidad en una propuesta reconocida dentro de la escena artesanal argentina.
+            Nuestra dedicación por los procesos, el cuidado en cada elaboración y la innovación constante nos llevaron a obtener
+            múltiples reconocimientos en competencias regionales, incluyendo medallas en la Copa Cuyana de Cervezas Artesanales.
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Hoy seguimos elaborando cerveza con el mismo objetivo del primer día: ofrecer una experiencia distinta, cercana y con
+            carácter local. Más que una cervecería, somos un espacio para compartir, descubrir nuevos sabores y brindar por
+            los encuentros que realmente importan.
+          </p>
+        </div>
+
+        <!-- Métricas / awards -->
+        <div class="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-[var(--color-surface-high)]">
+          <div>
+            <p class="text-[var(--color-primary)] text-3xl font-bold font-['Playfair_Display']">+5</p>
+            <p class="text-[var(--color-on-surface-muted)] text-xs uppercase tracking-widest mt-1">Estilos artesanales</p>
+          </div>
+          <div>
+            <p class="text-[var(--color-primary)] text-3xl font-bold font-['Playfair_Display']">🥇</p>
+            <p class="text-[var(--color-on-surface-muted)] text-xs uppercase tracking-widest mt-1">Copa Cuyana</p>
+          </div>
+          <div>
+            <p class="text-[var(--color-primary)] text-3xl font-bold font-['Playfair_Display']">100%</p>
+            <p class="text-[var(--color-on-surface-muted)] text-xs uppercase tracking-widest mt-1">Artesanal</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
